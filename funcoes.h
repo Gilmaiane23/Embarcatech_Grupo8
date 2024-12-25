@@ -6,10 +6,10 @@ void menu();
 
 // Funções para conversão de unidades
 
-// 1- Função para conversão de comprimento
+// 1-Função para conversão de comprimento
 void converterComprimento();
 
-//  2-Função para conversão de massa (comentada, mas pode ser implementada futuramente)
+// 2-Função para conversão de massa
 void converterMassa();
 
 // 3-Função para conversão de volume
@@ -24,7 +24,7 @@ int exibirSelecaoUnidade(const char *titulo);
 // 4-Função para conversão de comprimento
 void converterTemperatura();
 
-// 5 - Funções de Conversão de Unidade de Velocidade
+// 5-Funções de Conversão de Unidade de Velocidade
 float kmh_ms(float v);
 float kmh_mph(float v);
 float ms_kmh(float v);
@@ -38,9 +38,9 @@ void convertVelocidade();
 void converterEnergia();
 
 // 7-Funções de tempo (segundo, minuto, hora)
-int segundo();
-int minuto();
-int hora();
+float segundo();
+float minuto();
+float hora();
 void unidade_tempo();
 
 #endif

@@ -3,7 +3,7 @@
 #include <locale.h>
 
 
-//MENU//
+// MENU
 void menu(){
     printf("\n\n****************************************************************************************\n");
     printf("\t\t\tSuper conversor de unidades\n");
@@ -18,11 +18,10 @@ void menu(){
     printf("\t7 - Conversao de unidades de tempo.\n");
     printf("\nEscolha uma das opcoes acima: ");
 }
-//
 
-//**CONVERSÕES**/
+// CONVERSÕES
 
-//1-Conversão comprimento Metro, cm, mm
+// 1 - Conversão comprimento Metro, cm, mm
 void converterComprimento() {
     int opcao, continuar;
     float comprimento, resultado;
@@ -99,28 +98,28 @@ void converterComprimento() {
     }
 }
 
-//2- Conversão tempo, segundo, minuto, hora
-int segundo()
+// 2 - Conversão tempo, segundo, minuto, hora
+float segundo()
 {
-    int seg;
+    float seg;
     printf("Digite os segundos: ");
-    scanf("%d", &seg);
+    scanf("%f", &seg);
     return seg;
 }
 
-int minuto()
+float minuto()
 {
-    int min;
+    float min;
     printf("Digite os minutos: ");
-    scanf("%d", &min);
+    scanf("%f", &min);
     return min;
 }
 
-int hora()
+float hora()
 {
-    int hora;
+    float hora;
     printf("Digite as horas: ");
-    scanf("%d", &hora);
+    scanf("%f", &hora);
     return hora;
 }
 
@@ -128,10 +127,10 @@ void unidade_tempo()
 {
     int numero;
 
-    printf("Escolha uma opção:\n");
-    printf("1 Para segundos\n");
-    printf("2 Para minutos\n");
-    printf("3 Para horas\n");
+    printf("Escolha uma opção para o seu valor:\n");
+    printf("1 - Valor em segundos\n");
+    printf("2 - Valor em minutos\n");
+    printf("3 - Valor em horas\n");
     scanf("%d", &numero);
 
     if (numero < 1 || numero > 3)
@@ -141,35 +140,35 @@ void unidade_tempo()
     else if (numero == 1)
     {
         // Segundos
-        int seg, minuto, hora;
+        float seg, minuto, hora;
         seg = segundo();
-        minuto = seg / 60;
-        hora = seg / 3600;
-        printf("Tempo em segundos: %d\n", seg);
-        printf("Tempo em minutos: %d\n", minuto);
-        printf("Tempo em horas: %.d\n", hora);
+        minuto = seg / 60.0;
+        hora = seg / 3600.0;
+        printf("Tempo em segundos: %.2f\n", seg);
+        printf("Tempo em minutos: %.2f\n", minuto);
+        printf("Tempo em horas: %.2f\n", hora);
     }
     else if (numero == 2)
     {
         // Minutos
-        int segundo, min, hora;
+        float segundo, min, hora;
         min = minuto();
-        hora = min / 60;
-        segundo = min * 60;
-        printf("Tempo em segundos: %d\n", segundo);
-        printf("Tempo em minutos: %d\n", min);
-        printf("Tempo em horas: %.d\n", hora);
+        hora = min / 60.0;
+        segundo = min * 60.0;
+        printf("Tempo em segundos: %.2f\n", segundo);
+        printf("Tempo em minutos: %.2f\n", min);
+        printf("Tempo em horas: %.2f\n", hora);
     }
     else if (numero == 3)
     {
         // Horas
-        int segundo, minuto, horas;
+        float segundo, minuto, horas;
         horas = hora();
-        minuto = horas * 60;
-        segundo = horas * 3600;
-        printf("Tempo em segundos: %d\n", segundo);
-        printf("Tempo em minutos: %d\n", minuto);
-        printf("Tempo em horas: %d\n", horas);
+        minuto = horas * 60.0;
+        segundo = horas * 3600.0;
+        printf("Tempo em segundos: %.2f\n", segundo);
+        printf("Tempo em minutos: %.2f\n", minuto);
+        printf("Tempo em horas: %.2f\n", horas);
     }
 }
 
@@ -178,14 +177,14 @@ double obterFatorParaLitros(int unidade)
 {
   switch (unidade)
   {
-  case 1: // litro
-    return 1.0;
-  case 2:
-    return 1.0 / 1000.0; // 1000 mL = 1 litro
-  case 3:
-    return 1000.0; // 1 m³ = 1000 litros
-  default:
-    return -1; // Unidade inválida
+    case 1: // litro
+      return 1.0;
+    case 2:
+      return 1.0 / 1000.0; // 1000 mL = 1 litro
+    case 3:
+      return 1000.0; // 1 m³ = 1000 litros
+    default:
+      return -1; // Unidade inválida
   }
 }
 
@@ -235,7 +234,7 @@ void converterVolume()
          unidades[unidadeDestino]);
 }
 
-//4- Função de conversão de temperatura
+// 4 - Função de conversão de temperatura
 void converterTemperatura(){
 int opcao, continuar;
     float temperatura, resultado;
@@ -266,7 +265,7 @@ int opcao, continuar;
             resultado = (temperatura + 273);
             printf("%.2f Celsius equivale a %.2f Kelvin.", temperatura, resultado);
             break;
-         case 3:
+        case 3:
             // Conversão de Fahrenheit para Celsius
             printf("Digite a temperatura em Fahrenheit:");
             scanf("%f", &temperatura);
@@ -315,10 +314,10 @@ int opcao, continuar;
         }
     }
 
-   //return 0;
+   // return 0;
 }
 
-//5  - Função de conversão de Massa, kg, tonelada...
+// 5 - Função de conversão de Massa, kg, tonelada...
 void converterMassa(){
   float valor, valorOriginal;
   int origem, destino;
@@ -431,13 +430,18 @@ float mph_kmh(float v){
 float mph_ms(float v){
   return v * 0.45;
 }
+
 // Função principal com menu de seleção de conversão
 void convertVelocidade(){
   int op;
   float valor, conversao;
-  /* Menu com opções de conversões, cada uma associada a um número.
-  Caso o usuário digite -1, o programa retorna ao menu principal*/
-  do{
+
+  /* 
+  Menu com opções de conversões, cada uma associada a um número.
+  Caso o usuário digite -1, o programa retorna ao menu principal 
+  */
+
+  do {
     printf("Conversões:\n");
     printf("1- km/h -> m/s\n");
     printf("2- km/h -> mph\n");
@@ -447,13 +451,17 @@ void convertVelocidade(){
     printf("6- mph -> m/s\n");
     printf("Selecione a conversão desejada ou digite -1 para retornar: ");
     scanf("%d", &op);
-    // Se a opção for diferente de -1, o programa segue solicitando o valor que se deseja converter
+    
+    // Se a opção for diferente de -1, 
+    // o programa segue solicitando o valor que se deseja converter
     if (op != -1){
       printf("Digite o valor a ser convertido: ");
       scanf("%f", &valor);
       printf("\n");
       printf("Resultado: \n");
-      // Switch case que atualiza a variável "conversao" ao retorno da respectiva função de conversão
+      
+      // Switch case que atualiza a variável "conversao" 
+      // ao retorno da respectiva função de conversão
       switch(op){
         case 1:
           conversao = kmh_ms(valor);
@@ -487,11 +495,14 @@ void convertVelocidade(){
       }
     }
     
-    // Aciona os comandos do sistema para pausar a tela no resultado, e apagar as informações do terminal
-    //system("pause");
-    printf("Pressione qualquer tecla para continuar...");
-   // system("clear || cls");
-  }while(op != -1);
+    // Aciona os comandos do sistema para pausar a tela no resultado, 
+    // e apagar as informações do terminal
+
+    // system("pause");
+    // printf("Pressione qualquer tecla para continuar...");
+    // system("clear || cls");
+
+  } while(op != -1);
 };
 
 // 7 - Função de Conversão de Energia, W, Kw, cv

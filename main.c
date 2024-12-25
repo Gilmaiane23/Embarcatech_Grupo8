@@ -1,9 +1,10 @@
 #include <stdio.h>
-#include "funcoes.h"
+#include "funcoes.c"
 #include <locale.h>   //naoconseguiatualizaraacentuação
 
 int main()
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     int op = -1;
     
     // Loop principal até o usuário optar por sair
@@ -13,7 +14,7 @@ int main()
         scanf("%d", &op);
         
         // Limpeza da tela (funciona em sistemas Windows e Unix)
-        //system("clear || cls");
+        // system("clear || cls");
 
         switch (op)
         {
@@ -60,8 +61,12 @@ int main()
                 break;
         }
 
+        printf("\nPressione qualquer tecla para continuar: \n");
+        scanf("%*c");  // Limpa o buffer
+        scanf("%*c");  // Espera o usuário pressionar uma tecla
+
         // Limpeza da tela após cada interação (funciona em sistemas Windows e Unix)
-        //system("clear || cls");
+        // system("clear || cls");
     }
     
     return 0;
